@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .four-spaces::before {
+            content: "\00a0\00a0\00a0\00a0";
+
+        }
+        .six-spaces::before {
+            content: "\00a0\00a0\00a0\00a0\00a0\00a0";
+
+        }
+    </style>
+
+
+    <title>Document</title>
+</head>
+<body>
+    <h1>Rohit Raj's Portfolio</h1>
+    <h2>I'm a Developer</h2>
+    <hr>
+    <a href="{{url_for('movie')}}"><h3>Moview Ranking Project</h3></a>
+
+    <a href="./public/movie-ranking.html"><h3>Moview Ranking Project</h3></a>
+
+
+    <!-- Specific h3 tag -->
+    <div><h3 id="specific-h3">Top Movies of All the Time According to Rohit Raj</h3></div>
+    
+    <h3>My Best 3 Movies</h3>
+    <!-- hr tag to end based on the width of the specific h3 tag -->
+    <hr id="dynamic-hr" style="margin-left:0 ;">
+    
+    
+    <!-- <div style="display: inline-block; width: auto;">
+        <h3 style="margin: 0; display: inline;">My Best 3 Movies</h3>
+        <hr style="margin: 0; border: 1px solid; width: 100%; display: inline-block; vertical-align: middle;">
+    </div> -->
+
+    <script>
+        // Execute the script after the DOM content is loaded
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get the specific h3 tag
+            var h3 = document.getElementById('specific-h3');
+            // Get the hr tag
+            var hr = document.getElementById('dynamic-hr');
+            var totalWidth = h3.offsetWidth;
+            var h3Width = h3.offsetWidth;
+
+            var contentWidth = totalWidth - (parseInt(window.getComputedStyle(h3).paddingLeft) +
+                                  parseInt(window.getComputedStyle(h3).paddingRight) +
+                                  parseInt(window.getComputedStyle(h3).borderLeftWidth) +
+                                  parseInt(window.getComputedStyle(h3).borderRightWidth));
+
+                                  
+            // Set the hr tag width to auto
+            hr.style.width = "auto";
+            
+            // Get the width of the specific h3 tag
+            console.log("Width of h3 tag:", h3Width);
+            console.log("contentWidth",contentWidth )
+
+            // Set the width of the hr tag to match the width of the h3 tag
+            hr.style.width = h3Width - 1000+ 'px';
+        });
+    </script>
+
+
+    <h4>Harry Potter</h4>
+    <p>This is my favourite fantasy movie. I love the magic and mantras.</p>
+    <h4>Avatar</h4>
+    <p>This is my favourite animated movie. I love the beautiful scenaries , dialogue and actions.</p>
+    <h4>Gaurdians of the Galaxy</h4>
+    <p>This is my favourite adventurous movie. I love the actions and comedy in between.</p>
+
+
+    <!--  BIRTHDAY INVITATION -->
+    <a href="{{url_for('birthday')}}"><h1>Birthday Invite Project</h1></a>
+
+    <a href="./public/birthday-invite.html"><h1>Birthday Invite Project</h1></a>
+
+
+    <h1>It's My Birthday</h1>
+    <h2>on the 12th May</h2>
+    <img src="https://t3.ftcdn.net/jpg/05/58/14/66/360_F_558146635_Pjgj1F8Au64JTeB9VGuas0Fm09OhEOGh.jpg" alt="Birthday Cake">
+    <h3>What to bring:</h3>
+    <ul>
+        <li>Baloons (I love baloons)</li>
+        <li>Cake (I'm relly good at eating)</li>
+        <li>An appetite (there will be lots of food)</li>
+    </ul>
+    <h3>There is where you need to go:</h3>
+    <a href="https://www.google.com/maps/place/The+Indians+Restro+(TIR)/@13.0267234,77.6629914,17z/data=!3m1!4b1!4m6!3m5!1s0x3bae11d3749bf655:0x91b4c243d18dab7f!8m2!3d13.0267234!4d77.6655663!16s%2Fg%2F11p3qljy6v?entry=ttu" target="blank">Google Map Link</a>
+
+
+    <hr>
+    <!-- For Normal HTML -->
+    <a href="./public/about.html">About Me</a>
+    <a href="./public/contact.html">Contact Me</a>
+
+
+    <!-- Rendering by FLASK API  -->
+
+    <a href="{{ url_for('about') }}">About Me</a>
+    <a href="{{ url_for('contact') }}">Contact Me</a>
+        
+    
+</body>
+</html>
